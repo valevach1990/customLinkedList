@@ -1,16 +1,14 @@
 package custom_linked_list.node;
 
+
 import java.util.Objects;
 
 public class Node<E> {
     private E currentElement;
-    private Node<E> nextElement;
-    private Node<E> prevElement;
+    private Node<E> nextNode;
 
-    public Node(E currentElement, Node<E> nextElement, Node<E> prevElement) {
+    public Node(E currentElement) {
         this.currentElement = currentElement;
-        this.nextElement = nextElement;
-        this.prevElement = prevElement;
     }
 
     public E getCurrentElement() {
@@ -21,20 +19,12 @@ public class Node<E> {
         this.currentElement = currentElement;
     }
 
-    public Node<E> getNextElement() {
-        return nextElement;
+    public Node<E> getNextNode() {
+        return nextNode;
     }
 
-    public void setNextElement(Node<E> nextElement) {
-        this.nextElement = nextElement;
-    }
-
-    public Node<E> getPrevElement() {
-        return prevElement;
-    }
-
-    public void setPrevElement(Node<E> prevElement) {
-        this.prevElement = prevElement;
+    public void setNextNode(Node<E> nextNode) {
+        this.nextNode = nextNode;
     }
 
     @Override
@@ -42,20 +32,11 @@ public class Node<E> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Node<?> node = (Node<?>) o;
-        return Objects.equals(currentElement, node.currentElement) && Objects.equals(nextElement, node.nextElement) && Objects.equals(prevElement, node.prevElement);
+        return Objects.equals(currentElement, node.currentElement) && Objects.equals(nextNode, node.nextNode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(currentElement, nextElement, prevElement);
-    }
-
-    @Override
-    public String toString() {
-        return "Node{" +
-                "currentElement=" + currentElement +
-                ", nextElement=" + nextElement +
-                ", prevElement=" + prevElement +
-                '}';
+        return Objects.hash(currentElement, nextNode);
     }
 }
